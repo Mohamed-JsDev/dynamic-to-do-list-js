@@ -5,29 +5,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function addTask() {
     const taskText = taskInput.value.trim();
-    if (taskText !== " ") {
+    if (taskText !== "") {
       const listItem = document.createElement("li");
       listItem.textContent = taskText;
-      textContent.appendChild("");
 
       const removeButton = document.createElement("button");
       removeButton.textContent = "remove";
       removeButton.className = "remove-btn";
       removeButton.onclick = () => {
-        const task = taskList.filter(() => task !== taskText);
+        taskList.removeChild(listItem);
       };
       listItem.appendChild(removeButton);
       taskList.appendChild(listItem);
-      taskInput.value = " ";
+      taskInput.value = "";
     } else {
       alert("input is empty");
       return;
     }
   }
   taskInput.addEventListener("keypress", function (event) {
-    if (event.key === enter) {
+    if (event.key === "Enter") {
       addTask();
     }
   });
-  addButton.addEventListener("click", addTask());
+  addButton.addEventListener("click", addTask);
 });
